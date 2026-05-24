@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHIDO ALUMNI × IVS KYOTO 2026 SIDE EVENT</title>
+  <meta name="description" content="始動アルムナイ×IVS京都2026サイドイベント。始動修了生・卒業生が京都に集結。QUESTION 8F（DAIDOKORO）にて開催。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="image-slot.js"></script>
+  <style>
+    :root {
+      --navy:    #050a1a;
+      --navy2:   #080d22;
+      --navy3:   #0b1230;
+      --blue:    #4da6ff;
+      --cyan:    #00d4ff;
+      --purple:  #8b5cf6;
+      --purple2: #a855f7;
+      --white:   #ffffff;
+      --gray:    #c8d6e8;
+      --gray2:   #7080a0;
+      --gold:    #f0a500;
+      --silver:  #94a3b8;
+      --bronze:  #cd7c3a;
+      --food:    #22c55e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--white); font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; }
+
+    /* ══ NAV ══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 60px; padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(5,10,26,0.9); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(77,166,255,0.1);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { width: 26px; height: 24px; }
+    .nav-logo-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.05rem; letter-spacing: 0.06em; color: var(--white); }
+    .nav-logo-text em { color: var(--blue); font-style: normal; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--gray2); text-decoration: none; font-size: 0.72rem;
+      letter-spacing: 0.12em; transition: color 0.2s; position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--blue); transition: width 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+    .nav-links a.active::after, .nav-links a:hover::after { width: 100%; }
+    .nav-cta { background: linear-gradient(135deg,var(--blue),var(--purple)); border: none; color: var(--white); padding: 8px 20px; border-radius: 2px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-decoration: none; transition: all 0.2s; white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; box-shadow: 0 0 14px rgba(77,166,255,0.35); }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 0 24px rgba(77,166,255,0.55); }
+    @media (max-width: 768px) { .nav-links { display: none; } nav { padding: 0 20px; } }
+
+    /* ══ SCROLL BAND DIVIDERS ══ */
+    .scroll-band {
+      overflow: hidden; padding: 11px 0;
+      border-top: 1px solid rgba(77,166,255,0.07);
+      border-bottom: 1px solid rgba(77,166,255,0.07);
+      background: rgba(0,0,0,0.25);
+    }
+    .sb-track {
+      display: flex; width: max-content;
+      animation: sbScroll 28s linear infinite;
+    }
+    .scroll-band.rev .sb-track { animation-direction: reverse; }
+    .sb-item {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.65rem; letter-spacing: 0.35em;
+      color: rgba(77,166,255,0.28); padding: 0 36px; white-space: nowrap;
+    }
+    .sb-item .sep { color: rgba(139,92,246,0.4); margin: 0 8px; }
+    @keyframes sbScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ══ GHOST BG TEXT ══ */
+    .ghost { 
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(6rem, 22vw, 16rem); letter-spacing: -0.02em;
+      white-space: nowrap; color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.035);
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+
+    /* ══ SECTIONS COMMON ══ */
+    section { padding: 96px 40px; position: relative; overflow: hidden; }
+    section:nth-child(odd) { background: var(--navy); }
+    section:nth-child(even) { background: var(--navy2); }
+    .container { max-width: 1080px; margin: 0 auto; position: relative; z-index: 1; }
+    .sec-label {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.65rem; letter-spacing: 0.4em; color: var(--blue);
+      display: flex; align-items: center; gap: 16px; margin-bottom: 48px;
+    }
+    .sec-label::before { content: ''; flex: 0 0 32px; height: 1px; background: var(--blue); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-slow { opacity: 0; transform: translateY(32px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal-slow.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══ HERO ══ */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 80px 40px 0; overflow: hidden; position: relative;
+    }
+    #constellation { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; }
+    .hero-aurora {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 45%;
+      background: radial-gradient(ellipse 90% 60% at 50% 110%, rgba(139,92,246,0.22) 0%, rgba(77,166,255,0.1) 45%, transparent 70%);
+      z-index: 2; pointer-events: none;
+    }
+    .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+    .hero-photo-overlay { position: absolute; inset: 0; z-index: 1; background: rgba(5,10,26,0.72); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Photo moments strip ── */
+    .moments { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+    .moment-img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    @media (max-width: 600px) { .moments { grid-template-columns: 1fr; } .moment-img { height: 220px; } }
+
+    /* ── Gallery photo grid ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 240px 240px;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .pg-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pg-wide { grid-column: span 2; }
+    @media (max-width: 700px) {
+      .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, 180px); }
+      .pg-wide { grid-column: span 2; }
+    }
+    .gallery-link-row { display: flex; justify-content: center; margin-top: 20px; }
+
+    /* ── Register photo bg ── */
+    #register .reg-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.35); }
+    #register .reg-overlay { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(77,166,255,0.08) 0%, rgba(5,10,26,0.5) 70%); pointer-events: none; }
+    #register .register-ghost, #register .register-inner { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: clamp(0.7rem, 1.5vw, 0.85rem); letter-spacing: 0.35em;
+      color: var(--blue); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; flex: 0 0 24px; height: 1px; background: rgba(77,166,255,0.5); }
+    .hero-torii { width: 64px; height: 58px; margin-bottom: 24px; animation: toriPulse 3s ease-in-out infinite; filter: drop-shadow(0 0 14px rgba(77,166,255,0.9)); }
+    @keyframes toriPulse { 0%,100%{filter:drop-shadow(0 0 10px rgba(77,166,255,0.7))} 50%{filter:drop-shadow(0 0 28px rgba(77,166,255,1)) drop-shadow(0 0 48px rgba(139,92,246,0.4))} }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(5rem, 18vw, 15rem); line-height: 0.88;
+      letter-spacing: -0.01em; text-transform: uppercase;
+    }
+    .hero-title .line1 { display: block; color: var(--white); }
+    .hero-title .line2 { display: block; }
+    .hero-title .t-stroke {
+      color: var(--white);
+      text-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 0 40px rgba(77,166,255,0.25);
+    }
+    .hero-title .t-blue {
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--purple2) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-ja { font-size: clamp(0.9rem, 2vw, 1.1rem); color: var(--gray2); margin-top: 24px; letter-spacing: 0.15em; font-weight: 300; }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 0; justify-content: center;
+      margin-top: 36px; border: 1px solid rgba(77,166,255,0.15); border-radius: 4px;
+    }
+    .hero-meta-item {
+      padding: 12px 24px; border-right: 1px solid rgba(77,166,255,0.1);
+      font-size: 0.8rem; display: flex; flex-direction: column; gap: 3px; align-items: center;
+    }
+    .hero-meta-item:last-child { border-right: none; }
+    .hero-meta-item .label { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--gray2); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
+    .hero-meta-item .val { font-weight: 700; color: var(--white); font-size: 0.85rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 36px; }
+    .btn-primary { background: linear-gradient(135deg,var(--blue),var(--purple)); color: var(--white); padding: 14px 36px; border-radius: 2px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 24px rgba(77,166,255,0.35); display: inline-block; font-family: 'Barlow Condensed', sans-serif; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(77,166,255,0.6); }
+    .btn-ghost { background: transparent; color: var(--white); padding: 14px 36px; border-radius: 2px; text-decoration: none; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; display: inline-block; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.08em; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.04); }
+
+    /* Hero → Ticker strip */
+    .hero-ticker {
+      position: relative; z-index: 1; width: 100vw; margin-left: calc(-50vw + 50%);
+      margin-top: 60px; overflow: hidden;
+      border-top: 1px solid rgba(77,166,255,0.12);
+      padding: 14px 0; background: rgba(0,0,0,0.35);
+    }
+    .ticker-track {
+      display: flex; width: max-content;
+      animation: sbScroll 22s linear infinite;
+    }
+    .ticker-item {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.8rem; letter-spacing: 0.25em; padding: 0 32px;
+      color: rgba(255,255,255,0.45); white-space: nowrap;
+    }
+    .ticker-item .dot { color: var(--blue); margin: 0 4px; }
+
+    /* ══ ABOUT (editorial) ══ */
+    .about-editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .ae-statement {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.1; letter-spacing: 0.01em;
+      margin-bottom: 32px;
+    }
+    .ae-statement em { font-style: normal; color: var(--blue); }
+    .ae-quote {
+      font-size: 0.85rem; color: var(--blue); border-left: 2px solid var(--blue);
+      padding-left: 16px; line-height: 1.8; letter-spacing: 0.05em;
+    }
+    .ae-right p { color: var(--gray); line-height: 2; font-size: 0.92rem; margin-bottom: 40px; }
+    .ae-points { display: flex; flex-direction: column; gap: 0; }
+    .ae-point {
+      display: flex; align-items: baseline; gap: 20px; padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ae-point:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .ae-en { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--blue); width: 100px; flex-shrink: 0; }
+    .ae-ja { font-size: 0.85rem; color: var(--gray); }
+    @media (max-width: 720px) { .about-editorial { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ══ TARGET (numbered list) ══ */
+    .target-list { max-width: 800px; margin: 0 auto; }
+    .tgt-item {
+      display: grid; grid-template-columns: 72px 1fr; gap: 32px;
+      padding: 32px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      align-items: start;
+    }
+    .tgt-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .tgt-num {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: 3.5rem; line-height: 1; color: rgba(139,92,246,0.22);
+    }
+    .tgt-item h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.02em; }
+    .tgt-item p { font-size: 0.84rem; color: var(--gray2); line-height: 1.8; }
+
+    /* ══ PROGRAM (editorial timeline) ══ */
+    .program-note { font-size: 0.78rem; color: var(--gray2); margin-bottom: 48px; }
+    .timeline { max-width: 700px; margin: 0 auto; }
+    .tl-item { display: grid; grid-template-columns: 80px 1px 1fr; gap: 0 28px; padding: 28px 0; position: relative; }
+    .tl-line { width: 1px; background: linear-gradient(180deg, rgba(77,166,255,0.4), rgba(77,166,255,0.1)); align-self: stretch; margin: 4px 0; }
+    .tl-dot-wrap { display: flex; justify-content: center; position: relative; }
+    /* Restructure to a simple 2-col */
+    .tl-item { display: grid; grid-template-columns: 80px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: start; }
+    .tl-item:first-child { border-top: 1px solid rgba(255,255,255,0.04); }
+    .tl-time { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--blue); line-height: 1; padding-top: 2px; }
+    .tl-body h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .tl-body p { font-size: 0.82rem; color: var(--gray2); line-height: 1.7; }
+    .tl-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; padding: 2px 10px; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; }
+    .tl-tag.lt { background: rgba(77,166,255,0.12); color: var(--blue); border: 1px solid rgba(77,166,255,0.25); }
+    .tl-tag.nw { background: rgba(139,92,246,0.12); color: var(--purple2); border: 1px solid rgba(139,92,246,0.25); }
+
+    /* ══ EARLY SUPPORTER ══ */
+    .early-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .early-img-wrap { position: relative; }
+    .early-img-wrap img { width: 100%; display: block; border-radius: 4px; }
+    .early-img-glow { position: absolute; inset: -1px; border-radius: 4px; background: linear-gradient(135deg,rgba(77,166,255,0.08),rgba(139,92,246,0.06)); pointer-events: none; }
+    .early-kicker { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.65rem; letter-spacing: 0.4em; color: var(--blue); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    .early-kicker::before { content: ''; flex: 0 0 24px; height: 1px; background: var(--blue); }
+    .early-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05; margin-bottom: 24px; }
+    .early-title span { background: linear-gradient(135deg,var(--cyan),var(--purple2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .early-body { color: var(--gray); font-size: 0.88rem; line-height: 1.9; margin-bottom: 28px; }
+    .perks { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .perk { display: flex; align-items: center; gap: 12px; font-size: 0.88rem; }
+    .perk-icon { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(135deg,var(--blue),var(--purple)); display: grid; place-items: center; flex-shrink: 0; }
+    .early-pricing { display: flex; align-items: baseline; gap: 12px; margin-bottom: 28px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .ep-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2.8rem; color: var(--blue); line-height: 1; }
+    .ep-label { font-size: 0.78rem; color: var(--gray2); line-height: 1.5; }
+    @media (max-width: 720px) { .early-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ══ TICKET ══ */
+    .ticket-compare { max-width: 640px; margin: 0 auto 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(77,166,255,0.1); border-radius: 4px; overflow: hidden; }
+    .tc-cell { background: var(--navy2); padding: 36px 28px; }
+    .tc-cell.featured { background: linear-gradient(135deg, rgba(77,166,255,0.08), rgba(139,92,246,0.06)); }
+    .tc-type { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gray2); margin-bottom: 12px; }
+    .tc-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 3.2rem; line-height: 1; margin-bottom: 16px; }
+    .tc-cell.featured .tc-price { color: var(--blue); }
+    .tc-note { font-size: 0.78rem; color: var(--gray2); line-height: 1.7; }
+    .tc-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 2px; background: linear-gradient(135deg,var(--blue),var(--purple)); margin-bottom: 12px; font-family: 'Barlow Condensed', sans-serif; }
+    .ticket-info { text-align: center; font-size: 0.8rem; color: var(--gray2); margin-bottom: 32px; }
+    @media (max-width: 480px) { .ticket-compare { grid-template-columns: 1fr; } }
+
+    /* ══ GALLERY ══ */
+    .gallery-card {
+      display: flex; align-items: center; gap: 28px;
+      border: 1px solid rgba(77,166,255,0.15); border-radius: 4px;
+      padding: 36px 40px; max-width: 620px; margin: 0 auto;
+      text-decoration: none; color: inherit; transition: all 0.3s;
+    }
+    .gallery-card:hover { border-color: rgba(77,166,255,0.45); background: rgba(77,166,255,0.04); }
+    .gc-icon { width: 52px; height: 52px; border-radius: 4px; background: linear-gradient(135deg,var(--blue),var(--purple)); display: grid; place-items: center; flex-shrink: 0; }
+    .gc-text h3 { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .gc-text p { font-size: 0.82rem; color: var(--gray2); }
+    .gc-arrow { margin-left: auto; color: var(--blue); font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; flex-shrink: 0; }
+
+    /* ══ VENUE ══ */
+    .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .venue-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2.5rem,5vw,3.8rem); color: var(--blue); line-height: 1; margin-bottom: 6px; }
+    .venue-floor { font-size: 0.8rem; color: var(--gray2); letter-spacing: 0.1em; margin-bottom: 32px; }
+    .venue-rows { display: flex; flex-direction: column; gap: 0; }
+    .venue-row { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
+    .venue-row:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .venue-row .lbl { color: var(--gray2); font-size: 0.72rem; width: 52px; flex-shrink: 0; padding-top: 2px; }
+    .venue-row .val { color: var(--white); line-height: 1.6; }
+    .venue-map { background: var(--navy3); border-radius: 4px; border: 1px solid rgba(77,166,255,0.1); height: 220px; display: grid; place-items: center; }
+    .venue-map a { color: var(--blue); text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 500; transition: opacity 0.2s; }
+    .venue-map a:hover { opacity: 0.7; }
+    @media (max-width: 680px) { .venue-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* ══ SPONSORS ══ */
+    .sponsor-tiers { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(77,166,255,0.08); border-radius: 4px; overflow: hidden; margin-bottom: 56px; }
+    .tier { background: var(--navy2); }
+    .tier-head { padding: 24px 18px 18px; }
+    .tier-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.2em; margin-bottom: 6px; }
+    .tier-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.7rem; line-height: 1; }
+    .tier-disc { font-size: 0.68rem; color: var(--gray2); margin-top: 3px; }
+    .tier-rows { padding: 0 18px 16px; }
+    .tier-row { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.72rem; display: flex; justify-content: space-between; gap: 8px; }
+    .tier-row:last-child { border-bottom: none; }
+    .tr-label { color: var(--gray2); }
+    .tr-val { font-weight: 500; text-align: right; }
+    .tier-gold .tier-name, .tier-gold .tier-price { color: var(--gold); }
+    .tier-gold .tier-head { background: linear-gradient(135deg,rgba(240,165,0,0.12),rgba(240,165,0,0.04)); }
+    .tier-silver .tier-name, .tier-silver .tier-price { color: var(--silver); }
+    .tier-silver .tier-head { background: linear-gradient(135deg,rgba(148,163,184,0.1),rgba(148,163,184,0.03)); }
+    .tier-bronze .tier-name, .tier-bronze .tier-price { color: var(--bronze); }
+    .tier-bronze .tier-head { background: linear-gradient(135deg,rgba(205,124,58,0.12),rgba(205,124,58,0.04)); }
+    .tier-food .tier-name, .tier-food .tier-price { color: var(--food); }
+    .tier-food .tier-head { background: linear-gradient(135deg,rgba(34,197,94,0.1),rgba(34,197,94,0.03)); }
+    @media (max-width: 900px) { .sponsor-tiers { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 480px) { .sponsor-tiers { grid-template-columns: 1fr; } }
+    .logos-label { font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gray2); text-align: center; margin-bottom: 20px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
+    .logos-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 40px; }
+    .logo-slot { width: 152px; height: 68px; border: 1px dashed rgba(255,255,255,0.1); border-radius: 2px; display: grid; place-items: center; font-size: 0.65rem; color: var(--gray2); letter-spacing: 0.05em; }
+    .sponsor-cta { text-align: center; }
+    .sponsor-cta p { font-size: 0.82rem; color: var(--gray2); margin-bottom: 16px; }
+    .btn-outline { background: transparent; color: var(--blue); padding: 12px 28px; border: 1px solid rgba(77,166,255,0.4); border-radius: 2px; text-decoration: none; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.08em; transition: all 0.2s; display: inline-block; font-family: 'Barlow Condensed', sans-serif; }
+    .btn-outline:hover { background: rgba(77,166,255,0.08); border-color: var(--blue); }
+
+    /* ══ ABOUT SHIDO ══ */
+    .shido-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .shido-heading { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2.5rem,6vw,4.5rem); line-height: 1; letter-spacing: 0.01em; margin-bottom: 24px; }
+    .shido-heading span { color: var(--blue); }
+    .shido-stats { display: flex; gap: 32px; margin-top: 36px; }
+    .shido-stat .n { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2.4rem; color: var(--blue); display: block; }
+    .shido-stat .l { font-size: 0.72rem; color: var(--gray2); }
+    .shido-right p { color: var(--gray); line-height: 1.95; font-size: 0.9rem; margin-bottom: 24px; }
+    .link-arrow { color: var(--blue); text-decoration: none; font-size: 0.88rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.2s; }
+    .link-arrow:hover { gap: 14px; }
+    @media (max-width: 680px) { .shido-layout { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* ══ FAQ ══ */
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    details { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    details:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    summary { padding: 22px 0; cursor: pointer; font-weight: 500; font-size: 0.9rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; user-select: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary .q-icon { color: var(--blue); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1rem; flex-shrink: 0; transition: transform 0.3s; }
+    details[open] summary .q-icon { transform: rotate(45deg); }
+    details[open] summary { color: var(--blue); }
+    .faq-ans { padding: 0 0 22px; color: var(--gray); font-size: 0.86rem; line-height: 1.9; max-width: 90%; }
+
+    /* ══ REGISTER ══ */
+    #register {
+      min-height: 80vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 100px 40px;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(77,166,255,0.1) 0%, rgba(139,92,246,0.07) 40%, transparent 70%), var(--navy3);
+      position: relative; overflow: hidden;
+    }
+    .register-ghost { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none; }
+    .rg-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(8rem, 25vw, 20rem); color: transparent; -webkit-text-stroke: 1px rgba(77,166,255,0.05); white-space: nowrap; }
+    .register-inner { position: relative; z-index: 1; }
+    .reg-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.65rem; letter-spacing: 0.45em; color: var(--blue); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .reg-eyebrow::before, .reg-eyebrow::after { content: ''; flex: 0 0 40px; height: 1px; background: rgba(77,166,255,0.4); }
+    .reg-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2.8rem,8vw,6rem); line-height: 0.92; margin-bottom: 16px; }
+    .reg-sub { color: var(--gray2); font-size: 0.9rem; margin-bottom: 48px; letter-spacing: 0.1em; }
+    .reg-cards { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 44px; }
+    .reg-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 2px; padding: 10px 20px; font-size: 0.78rem; color: var(--gray); }
+    .btn-peatix { display: inline-block; background: linear-gradient(135deg,var(--blue),var(--purple)); color: var(--white); padding: 18px 52px; border-radius: 2px; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.1em; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 32px rgba(77,166,255,0.35); }
+    .btn-peatix:hover { transform: translateY(-3px); box-shadow: 0 8px 48px rgba(77,166,255,0.5); }
+
+    /* ══ FOOTER ══ */
+    footer { background: #020509; border-top: 1px solid rgba(77,166,255,0.07); padding: 44px 40px; }
+    .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+    .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: 0.1em; }
+    .footer-org { font-size: 0.75rem; color: var(--gray2); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+    .footer-links a { color: var(--gray2); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.05em; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--blue); }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.18); margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 28 26" fill="none">
+      <path d="M2 8 Q4 5 9 4.5 L19 4.5 Q24 5 26 8" stroke="#4da6ff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <line x1="10" y1="4.5" x2="10" y2="24" stroke="#4da6ff" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="18" y1="4.5" x2="18" y2="24" stroke="#4da6ff" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="10.5" y1="13" x2="17.5" y2="13" stroke="#4da6ff" stroke-width="2" stroke-linecap="round"/>
+      <rect x="12.5" y="1.5" width="3" height="5" rx="0.5" fill="#4da6ff"/>
+    </svg>
+    <span class="nav-logo-text">SHIDO <em>ALUMNI</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#program">PROGRAM</a></li>
+    <li><a href="#early">EARLY BIRD</a></li>
+    <li><a href="#venue">VENUE</a></li>
+    <li><a href="#sponsors">SPONSORS</a></li>
+  </ul>
+  <a href="#register" class="nav-cta">APPLY ON PEATIX</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-photo" style="background:url('assets/photo-01-room.jpg') center/cover no-repeat;"></div>
+  <div class="hero-photo-overlay"></div>
+  <canvas id="constellation"></canvas>
+  <div class="hero-aurora"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">IVS KYOTO 2026 &nbsp;×&nbsp; SIDE EVENT</div>
+    <svg class="hero-torii" viewBox="0 0 120 100" fill="none">
+      <path d="M4 34 Q8 26 26 25 L94 25 Q112 26 116 34" stroke="#4da6ff" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+      <line x1="28" y1="49" x2="92" y2="49" stroke="#4da6ff" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="35" y1="24" x2="35" y2="96" stroke="#4da6ff" stroke-width="6.5" stroke-linecap="round"/>
+      <line x1="85" y1="24" x2="85" y2="96" stroke="#4da6ff" stroke-width="6.5" stroke-linecap="round"/>
+      <rect x="53" y="15" width="14" height="12" rx="1.5" fill="#4da6ff"/>
+    </svg>
+    <h1 class="hero-title">
+      <span class="line1">SHIDO</span>
+      <span class="line2"><span class="t-blue">A</span><span class="t-stroke">LUMNI</span></span>
+    </h1>
+    <p class="hero-ja">始動アルムナイ、京都に集結。</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="label">DATE</span><span class="val">2026.07.03 FRI</span></div>
+      <div class="hero-meta-item"><span class="label">TIME</span><span class="val">18:00 受付 / 18:30〜21:00</span></div>
+      <div class="hero-meta-item"><span class="label">VENUE</span><span class="val">QUESTION 8F / KYOTO</span></div>
+      <div class="hero-meta-item"><span class="label">CAPACITY</span><span class="val">100名</span></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#register" class="btn-primary">🎟&nbsp; EARLY BIRD ¥4,000 — 申込む</a>
+      <a href="#about" class="btn-ghost">詳細を見る</a>
+    </div>
+  </div>
+  <!-- Ticker strip at bottom of hero -->
+  <div class="hero-ticker">
+    <div class="ticker-track" id="ticker">
+      <span class="ticker-item">IVS KYOTO 2026<span class="dot">✦</span></span>
+      <span class="ticker-item">SIDE EVENT<span class="dot">✦</span></span>
+      <span class="ticker-item">始動アルムナイ<span class="dot">✦</span></span>
+      <span class="ticker-item">QUESTION 8F<span class="dot">✦</span></span>
+      <span class="ticker-item">EARLY BIRD ¥4,000<span class="dot">✦</span></span>
+      <span class="ticker-item">定員100名<span class="dot">✦</span></span>
+      <span class="ticker-item">ネットワーキング<span class="dot">✦</span></span>
+      <span class="ticker-item">ライトニングトーク<span class="dot">✦</span></span>
+      <span class="ticker-item">LIMITED BADGE<span class="dot">✦</span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item">IVS KYOTO 2026<span class="dot">✦</span></span>
+      <span class="ticker-item">SIDE EVENT<span class="dot">✦</span></span>
+      <span class="ticker-item">始動アルムナイ<span class="dot">✦</span></span>
+      <span class="ticker-item">QUESTION 8F<span class="dot">✦</span></span>
+      <span class="ticker-item">EARLY BIRD ¥4,000<span class="dot">✦</span></span>
+      <span class="ticker-item">定員100名<span class="dot">✦</span></span>
+      <span class="ticker-item">ネットワーキング<span class="dot">✦</span></span>
+      <span class="ticker-item">ライトニングトーク<span class="dot">✦</span></span>
+      <span class="ticker-item">LIMITED BADGE<span class="dot">✦</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="ghost" aria-hidden="true">ABOUT</div>
+  <div class="container">
+    <div class="sec-label reveal">ABOUT THE EVENT</div>
+    <div class="about-editorial">
+      <div class="reveal">
+        <h2 class="ae-statement">始動アルムナイ、<br><em>京都</em>に集結。</h2>
+        <p class="ae-quote">"IVSという最前線の場で、<br>次なる挑戦への一歩を。"</p>
+      </div>
+      <div class="reveal-slow">
+        <p>IVS KYOTO 2026の開催に合わせ、始動プログラムの卒業生・修了生・関係者が一堂に会するサイドイベントを開催します。始動で育んだ繋がりを深め、共に語り、次のステップを踏み出す夜にしましょう。</p>
+        <div class="ae-points">
+          <div class="ae-point">
+            <span class="ae-en">CONNECT</span>
+            <span class="ae-ja">アルムナイ同士の再会と新たな出会い</span>
+          </div>
+          <div class="ae-point">
+            <span class="ae-en">SHARE</span>
+            <span class="ae-ja">LTで挑戦・学びをオープンに語り合う</span>
+          </div>
+          <div class="ae-point">
+            <span class="ae-en">IGNITE</span>
+            <span class="ae-ja">次のイノベーターを始動に火付け</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND: WHO -->
+<div class="scroll-band">
+  <div class="sb-track">
+    <span class="sb-item">WHO<span class="sep">×</span></span><span class="sb-item">AUDIENCE<span class="sep">×</span></span><span class="sb-item">参加対象者<span class="sep">×</span></span><span class="sb-item">WHO<span class="sep">×</span></span><span class="sb-item">AUDIENCE<span class="sep">×</span></span><span class="sb-item">参加対象者<span class="sep">×</span></span>
+    <span class="sb-item">WHO<span class="sep">×</span></span><span class="sb-item">AUDIENCE<span class="sep">×</span></span><span class="sb-item">参加対象者<span class="sep">×</span></span><span class="sb-item">WHO<span class="sep">×</span></span><span class="sb-item">AUDIENCE<span class="sep">×</span></span><span class="sb-item">参加対象者<span class="sep">×</span></span>
+  </div>
+</div>
+
+<!-- TARGET -->
+<section id="target">
+  <div class="ghost" aria-hidden="true">WHO</div>
+  <div class="container">
+    <div class="sec-label reveal">参加対象者</div>
+    <div class="target-list">
+      <div class="tgt-item reveal">
+        <span class="tgt-num">01</span>
+        <div>
+          <h3>始動 修了生・卒業生</h3>
+          <p>始動を通じて出会った仲間とIVSという特別な場で再び集結しましょう。</p>
+        </div>
+      </div>
+      <div class="tgt-item reveal">
+        <span class="tgt-num">02</span>
+        <div>
+          <h3>始動 講師・メンター</h3>
+          <p>始動を支える先人の方々もぜひご参加ください。次世代との交流の場になります。</p>
+        </div>
+      </div>
+      <div class="tgt-item reveal">
+        <span class="tgt-num">03</span>
+        <div>
+          <h3>始動への応募を検討中の方</h3>
+          <p>「始動ってどんなプログラム？」修了生に直接話を聞ける絶好の機会です。</p>
+        </div>
+      </div>
+      <div class="tgt-item reveal">
+        <span class="tgt-num">04</span>
+        <div>
+          <h3>IVS参加者（始動に興味がある方）</h3>
+          <p>IVSで始動が気になった方の参加も大歓迎。ぜひ立ち寄ってください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND: PROGRAM -->
+<div class="scroll-band rev">
+  <div class="sb-track">
+    <span class="sb-item">PROGRAM<span class="sep">×</span></span><span class="sb-item">SCHEDULE<span class="sep">×</span></span><span class="sb-item">タイムスケジュール<span class="sep">×</span></span><span class="sb-item">PROGRAM<span class="sep">×</span></span><span class="sb-item">SCHEDULE<span class="sep">×</span></span><span class="sb-item">タイムスケジュール<span class="sep">×</span></span>
+    <span class="sb-item">PROGRAM<span class="sep">×</span></span><span class="sb-item">SCHEDULE<span class="sep">×</span></span><span class="sb-item">タイムスケジュール<span class="sep">×</span></span><span class="sb-item">PROGRAM<span class="sep">×</span></span><span class="sb-item">SCHEDULE<span class="sep">×</span></span><span class="sb-item">タイムスケジュール<span class="sep">×</span></span>
+  </div>
+</div>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="ghost" aria-hidden="true">PROGRAM</div>
+  <div class="container">
+    <div class="sec-label reveal">タイムスケジュール</div>
+    <p class="program-note reveal">※ 詳細は確定次第更新します。出入り自由。</p>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <span class="tl-time">18:00</span>
+        <div class="tl-body"><h4>開場・受付開始</h4><p>QUESTION 8F DAIDOKORO にお越しください</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">18:30</span>
+        <div class="tl-body"><h4>オープニング</h4><p>始動アルムナイ実行委員会よりご挨拶</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">18:45</span>
+        <div class="tl-body"><h4>ライトニングトーク <span class="tl-tag lt">LT</span></h4><p>始動アルムナイによる3分間のショートトーク。挑戦・学び・近況を共有します。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">19:30</span>
+        <div class="tl-body"><h4>ネットワーキング <span class="tl-tag nw">NETWORK</span></h4><p>自由交流タイム。飲み物・軽食を片手に語り合いましょう。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">21:00</span>
+        <div class="tl-body"><h4>クロージング</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOMENTS STRIP -->
+<div class="moments">
+  <img src="assets/photo-08-applause.jpg" alt="拍手・盛り上がり" class="moment-img">
+  <img src="assets/photo-04-smile.jpg" alt="ネットワーキング" class="moment-img">
+  <img src="assets/photo-07-audience.jpg" alt="聴衆の様子" class="moment-img">
+</div>
+
+<!-- BAND: EARLY SUPPORTER -->
+<div class="scroll-band">
+  <div class="sb-track">
+    <span class="sb-item">EARLY SUPPORTER<span class="sep">×</span></span><span class="sb-item">LIMITED<span class="sep">×</span></span><span class="sb-item">アーリーバード特典<span class="sep">×</span></span><span class="sb-item">EARLY SUPPORTER<span class="sep">×</span></span><span class="sb-item">LIMITED<span class="sep">×</span></span><span class="sb-item">アーリーバード特典<span class="sep">×</span></span>
+    <span class="sb-item">EARLY SUPPORTER<span class="sep">×</span></span><span class="sb-item">LIMITED<span class="sep">×</span></span><span class="sb-item">アーリーバード特典<span class="sep">×</span></span><span class="sb-item">EARLY SUPPORTER<span class="sep">×</span></span><span class="sb-item">LIMITED<span class="sep">×</span></span><span class="sb-item">アーリーバード特典<span class="sep">×</span></span>
+  </div>
+</div>
+
+<!-- EARLY SUPPORTER -->
+<section id="early">
+  <div class="ghost" aria-hidden="true">EARLY</div>
+  <div class="container">
+    <div class="early-grid">
+      <div class="early-img-wrap reveal">
+        <img src="assets/badge-sticker.png" alt="SHIDO ALUMNI 限定缶バッジ・ステッカー">
+        <div class="early-img-glow"></div>
+      </div>
+      <div class="reveal-slow">
+        <div class="early-kicker">EARLY SUPPORTER BENEFITS</div>
+        <h2 class="early-title"><span>LIMITED</span><br>EARLY<br>SUPPORTER</h2>
+        <p class="early-body">早期お申込みの方限定で、IVS KYOTO 2026 × SHIDO ALUMNI の特別ノベルティをプレゼント。数量限定のため、お早めに。</p>
+        <div class="perks">
+          <div class="perk">
+            <div class="perk-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <span>限定デザイン缶バッジ（57mm）</span>
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <span>ダイカット＆ラウンドステッカーセット</span>
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <span>EARLY SUPPORTER 認定証（名刺サイズ）</span>
+          </div>
+        </div>
+        <div class="early-pricing">
+          <span class="ep-price">¥4,000</span>
+          <span class="ep-label">アーリーバード価格<br><small style="color:var(--gray2)">（当日 ¥5,000）</small></span>
+        </div>
+        <a href="#register" class="btn-primary">今すぐ申込む</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKET -->
+<section id="ticket">
+  <div class="ghost" aria-hidden="true">TICKET</div>
+  <div class="container">
+    <div class="sec-label reveal">チケット</div>
+    <div class="ticket-compare reveal">
+      <div class="tc-cell featured">
+        <div class="tc-badge">EARLY BIRD</div>
+        <div class="tc-type">アーリーバード</div>
+        <div class="tc-price">¥4,000</div>
+        <div class="tc-note">限定缶バッジ・ステッカー進呈<br>数量限定・先着順</div>
+      </div>
+      <div class="tc-cell">
+        <div class="tc-type">当日・通常</div>
+        <div class="tc-price" style="color:var(--gray)">¥5,000</div>
+        <div class="tc-note">当日受付<br>Peatix事前購入も可</div>
+      </div>
+    </div>
+    <p class="ticket-info reveal">定員 100名 ／ 出入り自由 ／ 軽食・ドリンク付き（予定）</p>
+    <div style="text-align:center" class="reveal">
+      <a href="#register" class="btn-primary">Peatixで申込む</a>
+    </div>
+  </div>
+</section>
+
+<!-- BAND: GALLERY + VENUE -->
+<div class="scroll-band rev">
+  <div class="sb-track">
+    <span class="sb-item">GALLERY<span class="sep">×</span></span><span class="sb-item">昨年の様子<span class="sep">×</span></span><span class="sb-item">VENUE<span class="sep">×</span></span><span class="sb-item">会場<span class="sep">×</span></span><span class="sb-item">GALLERY<span class="sep">×</span></span><span class="sb-item">昨年の様子<span class="sep">×</span></span><span class="sb-item">VENUE<span class="sep">×</span></span><span class="sb-item">会場<span class="sep">×</span></span>
+    <span class="sb-item">GALLERY<span class="sep">×</span></span><span class="sb-item">昨年の様子<span class="sep">×</span></span><span class="sb-item">VENUE<span class="sep">×</span></span><span class="sb-item">会場<span class="sep">×</span></span><span class="sb-item">GALLERY<span class="sep">×</span></span><span class="sb-item">昨年の様子<span class="sep">×</span></span><span class="sb-item">VENUE<span class="sep">×</span></span><span class="sb-item">会場<span class="sep">×</span></span>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="ghost" aria-hidden="true">GALLERY</div>
+  <div class="container">
+    <div class="sec-label reveal">昨年の様子</div>
+    <div class="photo-grid reveal">
+      <img src="assets/photo-01-room.jpg" alt="会場全景" class="pg-img pg-wide">
+      <img src="assets/photo-09-lt2.jpg" alt="LT発表" class="pg-img">
+      <img src="assets/photo-06-presentation.jpg" alt="登壇中" class="pg-img">
+      <img src="assets/photo-05-listening.jpg" alt="聴衆の様子" class="pg-img">
+      <img src="assets/photo-02-lt.jpg" alt="LTセッション" class="pg-img">
+      <img src="assets/photo-03-networking.jpg" alt="ネットワーキング" class="pg-img pg-wide">
+      <img src="assets/photo-07-audience.jpg" alt="参加者" class="pg-img">
+    </div>
+
+  </div>
+</section>
+
+<!-- VENUE -->
+<section id="venue">
+  <div class="ghost" aria-hidden="true">VENUE</div>
+  <div class="container">
+    <div class="sec-label reveal">会場</div>
+    <div class="venue-grid">
+      <div class="reveal">
+        <div class="venue-name">QUESTION</div>
+        <div class="venue-floor">8F &nbsp;—&nbsp; DAIDOKORO（コミュニティキッチン）</div>
+        <div class="venue-rows">
+          <div class="venue-row"><span class="lbl">住所</span><span class="val">〒604-8006<br>京都市中京区河原町通御池下る 下丸屋町390-2</span></div>
+          <div class="venue-row"><span class="lbl">地下鉄</span><span class="val">東西線「京都市役所前」駅 1番出口 徒歩約1分</span></div>
+          <div class="venue-row"><span class="lbl">京阪</span><span class="val">「三条」駅 12番出口 徒歩約5分</span></div>
+          <div class="venue-row"><span class="lbl">運営</span><span class="val">京都信用金庫</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div style="overflow:hidden;border-radius:2px;height:440px;">
+          <img src="assets/map-question.png" alt="QUESTIONの地図" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(0.85) saturate(0.8);">
+        </div>
+        <div style="margin-top:10px;">
+          <a href="https://maps.app.goo.gl/L9Vo46A9AWZQzMeaA" target="_blank" rel="noopener" class="link-arrow" style="font-size:0.85rem;">
+            Google マップで開く <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND: SPONSORS -->
+<div class="scroll-band">
+  <div class="sb-track">
+    <span class="sb-item">SPONSORS<span class="sep">×</span></span><span class="sb-item">スポンサー<span class="sep">×</span></span><span class="sb-item">協賛プラン<span class="sep">×</span></span><span class="sb-item">SPONSORS<span class="sep">×</span></span><span class="sb-item">スポンサー<span class="sep">×</span></span><span class="sb-item">協賛プラン<span class="sep">×</span></span>
+    <span class="sb-item">SPONSORS<span class="sep">×</span></span><span class="sb-item">スポンサー<span class="sep">×</span></span><span class="sb-item">協賛プラン<span class="sep">×</span></span><span class="sb-item">SPONSORS<span class="sep">×</span></span><span class="sb-item">スポンサー<span class="sep">×</span></span><span class="sb-item">協賛プラン<span class="sep">×</span></span>
+  </div>
+</div>
+
+<!-- SPONSORS -->
+<section id="sponsors">
+  <div class="ghost" aria-hidden="true">SPONSORS</div>
+  <div class="container">
+    <div class="sec-label reveal">スポンサー / 協賛</div>
+    <div class="sponsor-tiers reveal">
+      <div class="tier tier-gold">
+        <div class="tier-head">
+          <div class="tier-name">GOLD</div>
+          <div class="tier-price">¥100,000</div>
+          <div class="tier-disc">アルムナイ割引 ¥15,000</div>
+        </div>
+        <div class="tier-rows">
+          <div class="tier-row"><span class="tr-label">位置づけ</span><span class="tr-val">最上位協賛</span></div>
+          <div class="tier-row"><span class="tr-label">ライトニングトーク</span><span class="tr-val">3分 あり</span></div>
+          <div class="tier-row"><span class="tr-label">MC紹介</span><span class="tr-val">個別紹介</span></div>
+          <div class="tier-row"><span class="tr-label">ロゴ掲載</span><span class="tr-val">大</span></div>
+          <div class="tier-row"><span class="tr-label">SNS</span><span class="tr-val">個別紹介</span></div>
+          <div class="tier-row"><span class="tr-label">展示スペース</span><span class="tr-val">個別</span></div>
+          <div class="tier-row"><span class="tr-label">参加枠</span><span class="tr-val">3名</span></div>
+          <div class="tier-row"><span class="tr-label">想定枠数</span><span class="tr-val">3社</span></div>
+        </div>
+      </div>
+      <div class="tier tier-silver">
+        <div class="tier-head">
+          <div class="tier-name">SILVER</div>
+          <div class="tier-price">¥50,000</div>
+          <div class="tier-disc">アルムナイ割引 ¥10,000</div>
+        </div>
+        <div class="tier-rows">
+          <div class="tier-row"><span class="tr-label">位置づけ</span><span class="tr-val">認知・展示</span></div>
+          <div class="tier-row"><span class="tr-label">ライトニングトーク</span><span class="tr-val">3分 あり</span></div>
+          <div class="tier-row"><span class="tr-label">MC紹介</span><span class="tr-val">個別紹介</span></div>
+          <div class="tier-row"><span class="tr-label">ロゴ掲載</span><span class="tr-val">中</span></div>
+          <div class="tier-row"><span class="tr-label">SNS</span><span class="tr-val">協賛企業紹介</span></div>
+          <div class="tier-row"><span class="tr-label">展示スペース</span><span class="tr-val">小型</span></div>
+          <div class="tier-row"><span class="tr-label">参加枠</span><span class="tr-val">2名</span></div>
+          <div class="tier-row"><span class="tr-label">想定枠数</span><span class="tr-val">5社</span></div>
+        </div>
+      </div>
+      <div class="tier tier-bronze">
+        <div class="tier-head">
+          <div class="tier-name">BRONZE</div>
+          <div class="tier-price">¥30,000</div>
+          <div class="tier-disc">アルムナイ割引 ¥5,000</div>
+        </div>
+        <div class="tier-rows">
+          <div class="tier-row"><span class="tr-label">位置づけ</span><span class="tr-val">応援協賛</span></div>
+          <div class="tier-row"><span class="tr-label">ライトニングトーク</span><span class="tr-val">なし</span></div>
+          <div class="tier-row"><span class="tr-label">MC紹介</span><span class="tr-val">一覧で紹介</span></div>
+          <div class="tier-row"><span class="tr-label">ロゴ掲載</span><span class="tr-val">一覧掲載</span></div>
+          <div class="tier-row"><span class="tr-label">SNS</span><span class="tr-val">一覧で紹介</span></div>
+          <div class="tier-row"><span class="tr-label">展示スペース</span><span class="tr-val">なし</span></div>
+          <div class="tier-row"><span class="tr-label">参加枠</span><span class="tr-val">1名</span></div>
+          <div class="tier-row"><span class="tr-label">想定枠数</span><span class="tr-val">10社</span></div>
+        </div>
+      </div>
+      <div class="tier tier-food">
+        <div class="tier-head">
+          <div class="tier-name">FOOD / DRINK</div>
+          <div class="tier-price">¥50,000</div>
+          <div class="tier-disc">アルムナイ割引 ¥10,000</div>
+        </div>
+        <div class="tier-rows">
+          <div class="tier-row"><span class="tr-label">位置づけ</span><span class="tr-val">体験提供</span></div>
+          <div class="tier-row"><span class="tr-label">ライトニングトーク</span><span class="tr-val">3分 あり</span></div>
+          <div class="tier-row"><span class="tr-label">MC紹介</span><span class="tr-val">個別紹介</span></div>
+          <div class="tier-row"><span class="tr-label">ロゴ掲載</span><span class="tr-val">大</span></div>
+          <div class="tier-row"><span class="tr-label">SNS</span><span class="tr-val">個別紹介</span></div>
+          <div class="tier-row"><span class="tr-label">食品提供</span><span class="tr-val">100名分</span></div>
+          <div class="tier-row"><span class="tr-label">参加枠</span><span class="tr-val">3名</span></div>
+          <div class="tier-row"><span class="tr-label">想定枠数</span><span class="tr-val">1〜3社</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="logos-label">SUPPORTING COMPANIES</div>
+    <div class="logos-grid reveal">
+      <div class="logo-slot">ロゴ掲載予定</div>
+      <div class="logo-slot">ロゴ掲載予定</div>
+      <div class="logo-slot">ロゴ掲載予定</div>
+      <div class="logo-slot">スポンサー募集中</div>
+    </div>
+    <div class="sponsor-cta reveal">
+      <p>協賛・出展のお問い合わせは始動アルムナイ実行委員会まで</p>
+      <a href="mailto:info@shido-alumni.jp" class="btn-outline">協賛のお問い合わせ →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SHIDO -->
+<section id="about-shido">
+  <div class="ghost" aria-hidden="true">SHIDO</div>
+  <div class="container">
+    <div class="shido-layout">
+      <div class="reveal">
+        <h2 class="shido-heading">ABOUT<br><span>始動</span></h2>
+        <p style="font-size:0.8rem;color:var(--gray2);line-height:1.6;max-width:240px">イノベーター養成プログラム</p>
+        <div class="shido-stats">
+          <div class="shido-stat"><span class="n">17+</span><span class="l">期</span></div>
+          <div class="shido-stat"><span class="n">100+</span><span class="l">修了生</span></div>
+        </div>
+      </div>
+      <div class="reveal-slow">
+        <div class="shido-right">
+          <p>「始動」は次世代のイノベーターを育てる本格的なプログラムです。経済産業省などが支援し、日本各地から選ばれた受講生が共に学び、挑戦し、深い繋がりを育みます。</p>
+          <p>卒業後もそのコミュニティは生き続け、各分野で活躍するアルムナイがIVSのような最前線の場で再び集います。このサイドイベントはその文化から生まれました。</p>
+          <a href="https://sido.jp/" target="_blank" rel="noopener" class="link-arrow">始動の公式サイトへ <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND: FAQ -->
+<div class="scroll-band rev">
+  <div class="sb-track">
+    <span class="sb-item">FAQ<span class="sep">×</span></span><span class="sb-item">よくある質問<span class="sep">×</span></span><span class="sb-item">FAQ<span class="sep">×</span></span><span class="sb-item">よくある質問<span class="sep">×</span></span><span class="sb-item">FAQ<span class="sep">×</span></span><span class="sb-item">よくある質問<span class="sep">×</span></span><span class="sb-item">FAQ<span class="sep">×</span></span><span class="sb-item">よくある質問<span class="sep">×</span></span>
+    <span class="sb-item">FAQ<span class="sep">×</span></span><span class="sb-item">よくある質問<span class="sep">×</span></span><span class="sb-item">FAQ<span class="sep">×</span></span><span class="sb-item">よくある質問<span class="sep">×</span></span><span class="sb-item">FAQ<span class="sep">×</span></span><span class="sb-item">よくある質問<span class="sep">×</span></span><span class="sb-item">FAQ<span class="sep">×</span></span><span class="sb-item">よくある質問<span class="sep">×</span></span>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="ghost" aria-hidden="true">FAQ</div>
+  <div class="container">
+    <div class="sec-label reveal">よくある質問</div>
+    <div class="faq-list reveal">
+      <details>
+        <summary>始動の修了生でなくても参加できますか？<span class="q-icon">+</span></summary>
+        <div class="faq-ans">はい、始動への応募検討者やIVS参加者（始動と無関係）の方も歓迎です。修了生と直接交流できる貴重な機会ですのでぜひご参加ください。</div>
+      </details>
+      <details>
+        <summary>アーリーバード特典はいつ受け取れますか？<span class="q-icon">+</span></summary>
+        <div class="faq-ans">イベント当日の受付時にお渡しします。数量限定のため、アーリーバード枠のお申込みはお早めに。</div>
+      </details>
+      <details>
+        <summary>途中入場・退場はできますか？<span class="q-icon">+</span></summary>
+        <div class="faq-ans">はい、出入り自由です。IVS本会場との行き来も歓迎しています。</div>
+      </details>
+      <details>
+        <summary>ライトニングトークに登壇したい場合は？<span class="q-icon">+</span></summary>
+        <div class="faq-ans">申込み後に別途LT登壇の募集をアナウンスします。始動アルムナイであれば積極的にご応募ください。</div>
+      </details>
+      <details>
+        <summary>IVS本体のチケットも必要ですか？<span class="q-icon">+</span></summary>
+        <div class="faq-ans">このサイドイベントへの参加にIVS本体チケットは不要です。本イベントのチケット（Peatix）のみでご参加いただけます。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register" style="position:relative;overflow:hidden;">
+  <img src="assets/photo-04-smile.jpg" alt="" class="reg-bg">
+  <div class="reg-overlay"></div>
+  <div class="register-ghost" aria-hidden="true">
+    <span class="rg-text">JOIN US</span>
+  </div>
+  <div class="register-inner">
+    <div class="reg-eyebrow">JOIN US</div>
+    <h2 class="reg-title">SHIDO ALUMNI<br>× IVS KYOTO</h2>
+    <p class="reg-sub">京都で、アルムナイと、次の始まりを。</p>
+    <div class="reg-cards">
+      <div class="reg-card">📅 2026年7月3日（金）18:30〜21:00</div>
+      <div class="reg-card">📍 QUESTION 8F &nbsp;京都市中京区</div>
+      <div class="reg-card">🎟 Early Bird ¥4,000 ／ 当日 ¥5,000</div>
+      <div class="reg-card">👥 定員100名・出入り自由</div>
+    </div>
+    <a href="#" class="btn-peatix">Peatixで申込む →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">SHIDO ALUMNI × IVS KYOTO 2026</div>
+    <div class="footer-org">主催：始動アルムナイ実行委員会</div>
+    <div class="footer-links">
+      <a href="https://sido.jp/" target="_blank" rel="noopener">始動 公式サイト</a>
+      <a href="https://www.ivs.events/" target="_blank" rel="noopener">IVS 公式サイト</a>
+      <a href="https://question.kyoto-shinkin.co.jp/" target="_blank" rel="noopener">QUESTION</a>
+      <a href="mailto:info@shido-alumni.jp">お問い合わせ</a>
+    </div>
+    <div class="footer-copy">© 2026 始動アルムナイ実行委員会. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// ── Constellation ──
+const canvas = document.getElementById('constellation');
+const ctx = canvas.getContext('2d');
+let pts = [];
+function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+class P {
+  constructor() { this.init(); this.y = Math.random() * canvas.height; }
+  init() {
+    this.x = Math.random() * canvas.width;
+    this.y = -5;
+    this.vx = (Math.random()-.5)*.22;
+    this.vy = Math.random()*.12+.04;
+    this.r = Math.random()*1.6+.3;
+    this.a = Math.random()*.45+.15;
+    this.ph = Math.random()*Math.PI*2;
+    this.sp = Math.random()*.01+.005;
+  }
+  tick(t) {
+    this.x+=this.vx; this.y+=this.vy;
+    this.ca = this.a*(0.55+0.45*Math.sin(t*this.sp+this.ph));
+    if(this.y>canvas.height+5) this.init();
+    if(this.x<0) this.x=canvas.width;
+    if(this.x>canvas.width) this.x=0;
+  }
+  draw() {
+    ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(77,166,255,${this.ca})`; ctx.fill();
+  }
+}
+function initPts() { pts = Array.from({length:85},()=>new P()); }
+function drawLines() {
+  for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++) {
+    const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+    if(d<115) { const a=(1-d/115)*.1; ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.strokeStyle=`rgba(77,166,255,${a})`; ctx.lineWidth=.5; ctx.stroke(); }
+  }
+}
+let t=0;
+(function loop(){ ctx.clearRect(0,0,canvas.width,canvas.height); t++; pts.forEach(p=>{p.tick(t);p.draw();}); drawLines(); requestAnimationFrame(loop); })();
+resize(); initPts();
+window.addEventListener('resize',()=>{resize();initPts();});
+
+// ── Scroll Reveal ──
+const io = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); io.unobserve(e.target); } });
+},{threshold:.08});
+document.querySelectorAll('.reveal,.reveal-slow').forEach(el=>io.observe(el));
+
+// ── Stagger sibling rows ──
+document.querySelectorAll('.target-list,.timeline,.faq-list').forEach(wrap=>{
+  wrap.querySelectorAll('.reveal,.reveal-slow').forEach((el,i)=>{ el.style.transitionDelay=`${i*0.08}s`; });
+});
+
+// ── Nav active section ──
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+const nio = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ const id=e.target.id; links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id)); } });
+},{rootMargin:'-35% 0px -55% 0px'});
+secs.forEach(s=>nio.observe(s));
+</script>
+</body>
+</html>
